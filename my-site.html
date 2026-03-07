@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tino Schuldt</title>
+  <style>
+    :root {
+      --bg: #f6f6f3;
+      --text: #202020;
+      --muted: #6d6d6d;
+      --line: #dfdfd8;
+      --link: #2f5bd3;
+      --card: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.55;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      width: min(920px, calc(100% - 32px));
+      margin: 48px auto 80px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .avatar {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #ddd;
+      box-shadow: 0 2px 18px rgba(0,0,0,0.06);
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 48px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 24px;
+      font-style: italic;
+    }
+
+    .intro {
+      margin-top: 20px;
+      max-width: 640px;
+      font-size: 19px;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--text);
+      font-size: 18px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .links a:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    }
+
+    .projects { margin-top:40px; }
+
+.project { display:grid; grid-template-columns:80px 1fr; gap:18px; padding:18px 0; border-top:1px solid var(--line);} 
+
+.project img{ width:70px; height:70px; object-fit:cover; border-radius:8px; border:1px solid var(--line);} 
+
+.project-title{ font-size:20px; margin:0 0 6px;} 
+
+.project p{ margin:0; font-size:17px;}
+
+.timeline {
+      margin-top: 36px;
+      position: relative;
+    }
+
+    .item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 24px;
+      padding: 20px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .year {
+      color: var(--muted);
+      font-size: 15px;
+      padding-top: 4px;
+    }
+
+    .content h2 {
+      margin: 0 0 10px;
+      font-size: 28px;
+      font-weight: 400;
+    }
+
+    .content p {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .content ul {
+      margin: 8px 0 0 22px;
+      padding: 0;
+      font-size: 17px;
+    }
+
+    .footer {
+      margin-top: 44px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    @media (max-width: 720px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .avatar {
+        margin: 0 auto;
+      }
+
+      h1 {
+        font-size: 38px;
+      }
+
+      .subtitle {
+        font-size: 21px;
+      }
+
+      .intro {
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 18px;
+      }
+
+      .links {
+        justify-content: center;
+      }
+
+      .item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .year {
+        padding-top: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="avatar">
+        <img id="profileImage" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80" alt="Profilbild" />
+      </div>
+      <div>
+        <h1 id="name">Tino Schuldt</h1>
+        <p class="subtitle" id="tagline">I build systems across industry, software, and ideas.</p>
+        <p class="intro" id="introText">
+          Ich arbeite an Fertigung, Software, Strategie und neuen Produkten. Diese Seite ist absichtlich ruhig,
+          textzentriert und leichtgewichtig gehalten. Kein Framework, nur HTML, CSS und ein wenig JavaScript.
+        </p>
+        <div class="links" id="socialLinks"></div>
+      </div>
+    </section>
+
+    <section id="projects" class="projects"></section>
+
+    <section class="timeline" id="timeline"></section>
+
+    <footer class="footer">
+      <span id="footerText">Simple personal site in plain JavaScript.</span>
+    </footer>
+  </main>
+
+  <script>
+    const profile = {
+      name: "Tino Schuldt",
+      tagline: "I build systems across industry, software, and ideas.",
+      intro: "Ich arbeite an Fertigung, Software, Strategie und neuen Produkten. Diese Seite ist absichtlich ruhig, textzentriert und leichtgewichtig gehalten. Kein Framework, nur HTML, CSS und ein wenig JavaScript.",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80",
+      footer: "Simple personal site in plain JavaScript.",
+      links: [
+        { label: "X", href: "https://x.com/" },
+        { label: "GH", href: "https://github.com/" },
+        { label: "in", href: "https://www.linkedin.com/" },
+        { label: "✉", href: "mailto:hello@example.com" }
+      ],
+      projects:[
+        {
+          name:"Radar Cat Collar",
+          link:"https://github.com/",
+          image:"https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=300&q=80",
+          desc:"Radar based collision warning system for cats using compact sensors and embedded processing."
+        },
+        {
+          name:"Knowledge Hub",
+          link:"https://github.com/",
+          image:"https://images.unsplash.com/photo-1456327102063-fb5054efe647?auto=format&fit=crop&w=300&q=80",
+          desc:"Self hosted knowledge system for books, maps, quotes and AI assisted research."
+        },
+        {
+          name:"Manufacturing Automation",
+          link:"https://github.com/",
+          image:"https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=300&q=80",
+          desc:"Experiments around autonomous factories, robotics integration and lights‑out production."
+        }
+      ],
+      timeline: [
+        {
+          year: "Heute",
+          title: "Focus",
+          body: "Ich arbeite an Themen zwischen Elektronikfertigung, Softwarearchitektur, KI und Produktideen. Mich interessieren robuste Systeme, klare Strategien und Dinge, die wirklich in der Realität funktionieren.",
+          bullets: [
+            "Fertigung und Operations",
+            "Web- und Cloud-Systeme",
+            "KI-nahe Produktideen"
+          ]
+        },
+        {
+          year: "Laufend",
+          title: "Projects",
+          body: "Ein Teil meiner Arbeit ist technisch, ein Teil strategisch. Meistens geht es darum, aus einer vagen Idee ein sauberes System zu bauen.",
+          bullets: [
+            "Digitale Produkte und Plattformen",
+            "Technische Konzepte und Roadmaps",
+            "Brücke zwischen Management und Umsetzung"
+          ]
+        },
+        {
+          year: "Davor",
+          title: "Background",
+          body: "Mein Hintergrund verbindet Industrie, Entwicklung, Strukturierung komplexer Themen und das Schreiben klarer Narrative für Entscheidungen.",
+          bullets: [
+            "Elektronik und industrielle Prozesse",
+            "Business Development und Strategie",
+            "Produkt- und Systemdenken"
+          ]
+        }
+      ]
+    };
+
+    document.getElementById("name").textContent = profile.name;
+    document.getElementById("tagline").textContent = profile.tagline;
+    document.getElementById("introText").textContent = profile.intro;
+    document.getElementById("profileImage").src = profile.image;
+    document.getElementById("footerText").textContent = profile.footer;
+
+    const linksEl = document.getElementById("socialLinks");
+
+    const projectsEl=document.getElementById("projects");
+
+    profile.projects.forEach(p=>{
+      const row=document.createElement("div");
+      row.className="project";
+
+      const img=document.createElement("img");
+      img.src=p.image;
+
+      const text=document.createElement("div");
+
+      const title=document.createElement("a");
+      title.href=p.link;
+      title.className="project-title";
+      title.textContent=p.name;
+      title.target="_blank";
+
+      const desc=document.createElement("p");
+      desc.textContent=p.desc;
+
+      text.appendChild(title);
+      text.appendChild(desc);
+
+      row.appendChild(img);
+      row.appendChild(text);
+
+      projectsEl.appendChild(row);
+    });
+    profile.links.forEach(link => {
+      const a = document.createElement("a");
+      a.href = link.href;
+      a.target = "_blank";
+      a.rel = "noreferrer";
+      a.textContent = link.label;
+      a.setAttribute("aria-label", link.label);
+      linksEl.appendChild(a);
+    });
+
+    const timelineEl = document.getElementById("timeline");
+    profile.timeline.forEach(entry => {
+      const item = document.createElement("article");
+      item.className = "item";
+
+      const year = document.createElement("div");
+      year.className = "year";
+      year.textContent = entry.year;
+
+      const content = document.createElement("div");
+      content.className = "content";
+
+      const title = document.createElement("h2");
+      title.textContent = entry.title;
+
+      const body = document.createElement("p");
+      body.textContent = entry.body;
+
+      const ul = document.createElement("ul");
+      entry.bullets.forEach(point => {
+        const li = document.createElement("li");
+        li.textContent = point;
+        ul.appendChild(li);
+      });
+
+      content.appendChild(title);
+      content.appendChild(body);
+      content.appendChild(ul);
+
+      item.appendChild(year);
+      item.appendChild(content);
+      timelineEl.appendChild(item);
+    });
+  </script>
+</body>
+</html>
