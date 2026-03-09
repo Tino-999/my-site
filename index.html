@@ -102,6 +102,11 @@ h1{
   border-top:1px solid var(--line);
 }
 
+.project:first-child,
+.article:first-child{
+  border-top:none;
+}
+
 .project img,
 .article img{
   width:70px;
@@ -216,13 +221,11 @@ const profile = {
   ]
 };
 
-// Header
 document.getElementById("name").textContent = profile.name;
 document.getElementById("tagline").textContent = profile.tagline;
 document.getElementById("introText").textContent = profile.intro;
 document.getElementById("footerText").textContent = profile.footer;
 
-// Social Links
 const linksEl = document.getElementById("socialLinks");
 profile.links.forEach(link => {
   const a = document.createElement("a");
@@ -232,7 +235,6 @@ profile.links.forEach(link => {
   linksEl.appendChild(a);
 });
 
-// Projects
 const projectsEl = document.getElementById("projects");
 profile.projects.forEach(p => {
   const row = document.createElement("div");
@@ -255,39 +257,34 @@ profile.projects.forEach(p => {
 
   text.appendChild(title);
   text.appendChild(desc);
-
   row.appendChild(img);
   row.appendChild(text);
-
   projectsEl.appendChild(row);
 });
 
-// Articles
 const articlesEl = document.getElementById("articles");
-profile.articles.forEach(aItem => {
+profile.articles.forEach(item => {
   const row = document.createElement("div");
   row.className = "article";
 
   const img = document.createElement("img");
-  img.src = aItem.image;
-  img.alt = aItem.name;
+  img.src = item.image;
+  img.alt = item.name;
 
   const text = document.createElement("div");
 
   const title = document.createElement("a");
-  title.href = aItem.link;
+  title.href = item.link;
   title.className = "article-title";
-  title.textContent = aItem.name;
+  title.textContent = item.name;
 
   const desc = document.createElement("p");
-  desc.textContent = aItem.desc;
+  desc.textContent = item.desc;
 
   text.appendChild(title);
   text.appendChild(desc);
-
   row.appendChild(img);
   row.appendChild(text);
-
   articlesEl.appendChild(row);
 });
 </script>
