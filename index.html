@@ -82,9 +82,19 @@ h1{
   font-size:18px;
 }
 
-.projects{margin-top:40px}
+.section-title{
+  margin:0 0 10px;
+  font-size:28px;
+  font-weight:400;
+}
 
-.project{
+.projects,
+.articles{
+  margin-top:40px;
+}
+
+.project,
+.article{
   display:grid;
   grid-template-columns:80px 1fr;
   gap:18px;
@@ -92,61 +102,27 @@ h1{
   border-top:1px solid var(--line);
 }
 
-.project:first-child{
-  border-top:none;
-}
-
-.project img{
+.project img,
+.article img{
   width:70px;
   height:70px;
   object-fit:cover;
   border-radius:8px;
   border:1px solid var(--line);
   filter:grayscale(100%);
+  background:var(--card);
 }
 
-.project-title{
+.project-title,
+.article-title{
+  display:inline-block;
   font-size:20px;
   margin:0 0 6px;
 }
 
-.project p{
+.project p,
+.article p{
   margin:0;
-  font-size:17px;
-}
-
-.timeline{
-  margin-top:36px;
-}
-
-.item{
-  display:grid;
-  grid-template-columns:120px 1fr;
-  gap:24px;
-  padding:20px 0;
-  border-top:1px solid var(--line);
-}
-
-.year{
-  color:var(--muted);
-  font-size:15px;
-  padding-top:4px;
-}
-
-.content h2{
-  margin:0 0 10px;
-  font-size:28px;
-  font-weight:400;
-}
-
-.content p{
-  margin:0 0 12px;
-  font-size:18px;
-}
-
-.content ul{
-  margin:8px 0 0 22px;
-  padding:0;
   font-size:17px;
 }
 
@@ -161,7 +137,10 @@ h1{
 @media(max-width:720px){
   .hero{text-align:center}
   .links{justify-content:center}
-  .item{grid-template-columns:1fr}
+  .project,
+  .article{
+    grid-template-columns:80px 1fr;
+  }
 }
 </style>
 </head>
@@ -171,126 +150,146 @@ h1{
 <main class="page">
 
 <section class="hero">
-<div>
-<h1 id="name"></h1>
-<p class="subtitle" id="tagline"></p>
-<p class="intro" id="introText"></p>
-<div class="links" id="socialLinks"></div>
-</div>
+  <div>
+    <h1 id="name"></h1>
+    <p class="subtitle" id="tagline"></p>
+    <p class="intro" id="introText"></p>
+    <div class="links" id="socialLinks"></div>
+  </div>
 </section>
 
-<section id="projects" class="projects"></section>
+<section class="projects">
+  <h2 class="section-title">Projects</h2>
+  <div id="projects"></div>
+</section>
 
-<section class="timeline" id="timeline"></section>
+<section class="articles">
+  <h2 class="section-title">Articles</h2>
+  <div id="articles"></div>
+</section>
 
 <footer class="footer">
-<span id="footerText"></span>
+  <span id="footerText"></span>
 </footer>
 
 </main>
 
 <script>
-
-const profile={
-
-name:"Tino Schuldt",
-
-tagline:"I learn and build across industry, space, art, culture, software, hardware and ideas.",
-
-intro:"",
-
-footer:"",
-
-links:[
-{label:"X",href:"https://x.com/SchuldtTino"},
-{label:"GH",href:"https://github.com/Tino-999/"},
-{label:"in",href:"https://www.linkedin.com/in/tinoschuldt/"},
-{label:"✉",href:"mailto:tinoschuldt100@gmail.com"}
-],
-
-projects:[
-{
-name:"Space Settlement Index",
-link:"https://space-settlement.net/",
-image:"https://spacesettlement-api.tinoschuldt100.workers.dev/images/7e022df5-3185-425e-8f39-cf1d03758fea",
-desc:"A small side project to train my programming skills while also organizing my research on the history of space settlement."
-},
-
-{
-name:"Ventarix",
-link:"https://www.ventarix.ch",
-image:"ventarix_logo.jpg",
-desc:"An exciting investment in a very talented team working on the digitalization of veterinary medicine."
-},
-
-{
-name:"Acupet",
-link:"https://acupet.ch",
-image:"icon.png",
-desc:"I helped inspire the early development of the Acupet app and accompanied parts of the long and often rocky path toward publication. A steep learning curve."
-}
-],
-
-<a href="/modern-ai.html">The Making of Modern AI</a>
-
+const profile = {
+  name:"Tino Schuldt",
+  tagline:"I learn and build across industry, space, art, culture, software, hardware and ideas.",
+  intro:"",
+  footer:"",
+  links:[
+    {label:"X",href:"https://x.com/SchuldtTino"},
+    {label:"GH",href:"https://github.com/Tino-999/"},
+    {label:"in",href:"https://www.linkedin.com/in/tinoschuldt/"},
+    {label:"✉",href:"mailto:tinoschuldt100@gmail.com"}
+  ],
+  projects:[
+    {
+      name:"Space Settlement Index",
+      link:"https://space-settlement.net/",
+      image:"https://spacesettlement-api.tinoschuldt100.workers.dev/images/7e022df5-3185-425e-8f39-cf1d03758fea",
+      desc:"A small side project to train my programming skills while also organizing my research on the history of space settlement."
+    },
+    {
+      name:"Ventarix",
+      link:"https://www.ventarix.ch",
+      image:"ventarix_logo.jpg",
+      desc:"An exciting investment in a very talented team working on the digitalization of veterinary medicine."
+    },
+    {
+      name:"Acupet",
+      link:"https://acupet.ch",
+      image:"icon.png",
+      desc:"I helped inspire the early development of the Acupet app and accompanied parts of the long and often rocky path toward publication. A steep learning curve."
+    }
+  ],
+  articles:[
+    {
+      name:"The Making of Modern AI",
+      link:"/modern-ai.html",
+      image:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Geoffrey_Hinton_at_UBC.jpg/160px-Geoffrey_Hinton_at_UBC.jpg",
+      desc:"A compact overview of the key conceptual jumps, papers, and people from the first formal neuron to modern language models."
+    }
+  ]
 };
 
-
 // Header
-
-document.getElementById("name").textContent=profile.name;
-document.getElementById("tagline").textContent=profile.tagline;
-document.getElementById("introText").textContent=profile.intro;
-document.getElementById("footerText").textContent=profile.footer;
-
+document.getElementById("name").textContent = profile.name;
+document.getElementById("tagline").textContent = profile.tagline;
+document.getElementById("introText").textContent = profile.intro;
+document.getElementById("footerText").textContent = profile.footer;
 
 // Social Links
-
-const linksEl=document.getElementById("socialLinks");
-
-profile.links.forEach(link=>{
-const a=document.createElement("a");
-a.href=link.href;
-a.target="_blank";
-a.textContent=link.label;
-linksEl.appendChild(a);
+const linksEl = document.getElementById("socialLinks");
+profile.links.forEach(link => {
+  const a = document.createElement("a");
+  a.href = link.href;
+  a.target = "_blank";
+  a.textContent = link.label;
+  linksEl.appendChild(a);
 });
-
 
 // Projects
+const projectsEl = document.getElementById("projects");
+profile.projects.forEach(p => {
+  const row = document.createElement("div");
+  row.className = "project";
 
-const projectsEl=document.getElementById("projects");
+  const img = document.createElement("img");
+  img.src = p.image;
+  img.alt = p.name;
 
-profile.projects.forEach(p=>{
+  const text = document.createElement("div");
 
-const row=document.createElement("div");
-row.className="project";
+  const title = document.createElement("a");
+  title.href = p.link;
+  title.className = "project-title";
+  title.textContent = p.name;
+  title.target = "_blank";
 
-const img=document.createElement("img");
-img.src=p.image;
+  const desc = document.createElement("p");
+  desc.textContent = p.desc;
 
-const text=document.createElement("div");
+  text.appendChild(title);
+  text.appendChild(desc);
 
-const title=document.createElement("a");
-title.href=p.link;
-title.className="project-title";
-title.textContent=p.name;
-title.target="_blank";
+  row.appendChild(img);
+  row.appendChild(text);
 
-const desc=document.createElement("p");
-desc.textContent=p.desc;
-
-text.appendChild(title);
-text.appendChild(desc);
-
-row.appendChild(img);
-row.appendChild(text);
-
-projectsEl.appendChild(row);
-
+  projectsEl.appendChild(row);
 });
 
+// Articles
+const articlesEl = document.getElementById("articles");
+profile.articles.forEach(aItem => {
+  const row = document.createElement("div");
+  row.className = "article";
 
+  const img = document.createElement("img");
+  img.src = aItem.image;
+  img.alt = aItem.name;
+
+  const text = document.createElement("div");
+
+  const title = document.createElement("a");
+  title.href = aItem.link;
+  title.className = "article-title";
+  title.textContent = aItem.name;
+
+  const desc = document.createElement("p");
+  desc.textContent = aItem.desc;
+
+  text.appendChild(title);
+  text.appendChild(desc);
+
+  row.appendChild(img);
+  row.appendChild(text);
+
+  articlesEl.appendChild(row);
+});
 </script>
 
 </body>
