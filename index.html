@@ -214,7 +214,7 @@ name:"Space Settlement Index",
 link:"https://space-settlement.net/",
 image:"https://spacesettlement-api.tinoschuldt100.workers.dev/images/7e022df5-3185-425e-8f39-cf1d03758fea",
 desc:"A small side project to train my programming skills while also organizing my research on the history of space settlement."
-}
+},
 
 {
 name:"Ventarix",
@@ -281,47 +281,6 @@ projectsEl.appendChild(row);
 
 });
 
-
-// Timeline
-
-const timelineEl=document.getElementById("timeline");
-
-profile.timeline.forEach(entry=>{
-
-const item=document.createElement("article");
-item.className="item";
-
-const year=document.createElement("div");
-year.className="year";
-year.textContent=entry.year;
-
-const content=document.createElement("div");
-content.className="content";
-
-const title=document.createElement("h2");
-title.textContent=entry.title;
-
-const body=document.createElement("p");
-body.textContent=entry.body;
-
-const ul=document.createElement("ul");
-
-entry.bullets.forEach(point=>{
-const li=document.createElement("li");
-li.textContent=point;
-ul.appendChild(li);
-});
-
-content.appendChild(title);
-content.appendChild(body);
-content.appendChild(ul);
-
-item.appendChild(year);
-item.appendChild(content);
-
-timelineEl.appendChild(item);
-
-});
 
 </script>
 
