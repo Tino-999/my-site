@@ -15,79 +15,194 @@
   --card:#ffffff;
 }
 
-body{
+*{box-sizing:border-box}
+
+html,body{
   margin:0;
+  padding:0;
   background:var(--bg);
   color:var(--text);
   font-family:Georgia,"Times New Roman",serif;
+  line-height:1.55;
 }
 
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+
 .page{
-  width:min(1100px,calc(100% - 32px));
-  margin:40px auto;
+  width:min(1200px,calc(100% - 32px));
+  margin:48px auto 80px;
+}
+
+.topbar{
+  padding-bottom:18px;
+  border-bottom:1px solid var(--line);
+}
+
+.back{
+  color:var(--muted);
+  font-size:15px;
+}
+
+.hero{
+  padding:26px 0 22px;
 }
 
 h1{
-  font-size:56px;
+  margin:0 0 8px;
+  font-size:72px;
   font-weight:400;
+  letter-spacing:-0.02em;
+  line-height:1.05;
 }
 
 .subtitle{
-  font-size:24px;
+  margin:0;
   color:var(--muted);
+  font-size:24px;
   font-style:italic;
+  max-width:980px;
 }
 
 .grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-  margin-top:40px;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:20px;
+  margin-top:18px;
 }
 
 .card{
   background:var(--card);
   border:1px solid var(--line);
-  border-radius:12px;
-  padding:18px;
+  border-radius:14px;
+  padding:20px;
+  min-height:360px;
+  display:flex;
+  flex-direction:column;
 }
 
-.top{
+.card-top{
   display:flex;
   justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+  margin-bottom:14px;
 }
 
-.people img{
-  width:40px;
-  height:40px;
-  border-radius:50%;
+.people{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  max-width:240px;
+}
+
+.people img,
+.person-fallback{
+  width:70px;
+  height:70px;
+  object-fit:cover;
+  border-radius:8px;
   border:1px solid var(--line);
+  filter:grayscale(100%);
+  background:var(--card);
+}
+
+.person-fallback{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--muted);
+  font-size:18px;
+  letter-spacing:0.04em;
 }
 
 .year{
   color:var(--muted);
+  font-size:15px;
+  padding-top:4px;
+  white-space:nowrap;
 }
 
 .card h2{
-  font-size:22px;
+  margin:0 0 8px;
+  font-size:28px;
   font-weight:400;
+  line-height:1.18;
 }
 
 .idea{
-  font-size:16px;
+  margin:0 0 16px;
+  font-size:18px;
 }
 
 .paper{
-  margin-top:10px;
+  margin-top:auto;
+  padding-top:14px;
   border-top:1px solid var(--line);
-  padding-top:10px;
+  font-size:17px;
+  line-height:1.35;
 }
 
 .footer{
-  margin-top:40px;
-  border-top:1px solid var(--line);
+  margin-top:44px;
   padding-top:20px;
+  border-top:1px solid var(--line);
   color:var(--muted);
+  font-size:15px;
+}
+
+@media(max-width:1000px){
+  .page{
+    width:min(920px,calc(100% - 24px));
+  }
+
+  h1{
+    font-size:56px;
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-width:720px){
+  .page{
+    width:min(100%,calc(100% - 20px));
+    margin:28px auto 40px;
+  }
+
+  h1{
+    font-size:44px;
+  }
+
+  .subtitle{
+    font-size:20px;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+
+  .card{
+    min-height:auto;
+    padding:16px;
+  }
+
+  .people img,
+  .person-fallback{
+    width:64px;
+    height:64px;
+  }
+
+  .card h2{
+    font-size:24px;
+  }
+
+  .idea,
+  .paper{
+    font-size:16px;
+  }
 }
 </style>
 </head>
@@ -96,107 +211,117 @@ h1{
 
 <main class="page">
 
-<a href="/">← Back</a>
+<div class="topbar">
+  <a class="back" href="/">← Back</a>
+</div>
 
-<h1>The Making of Modern AI</h1>
-
-<p class="subtitle">
-Six conceptual jumps from the first formal neuron to modern language models.
-</p>
+<header class="hero">
+  <h1>The Making of Modern AI</h1>
+  <p class="subtitle">Six conceptual jumps from the first formal neuron to modern language models.</p>
+</header>
 
 <section class="grid">
 
-<div class="card">
-<div class="top">
-<div class="people">
-<img src="images/ai/pitts.jpg">
-</div>
-<div class="year">1943</div>
-</div>
-<h2>McCulloch · Pitts</h2>
-<p class="idea">The neuron becomes a logical unit.</p>
-<div class="paper">
-A Logical Calculus of the Ideas Immanent in Nervous Activity<br>
-<a href="https://www.cs.cmu.edu/~epxing/Class/10715/reading/McCulloch.and.Pitts.pdf">read paper</a>
-</div>
-</div>
+  <article class="card">
+    <div class="card-top">
+      <div class="people">
+        <div class="person-fallback">WM</div>
+        <img src="/images/ai/pitts.jpg" alt="Walter Pitts">
+      </div>
+      <div class="year">1943</div>
+    </div>
+    <h2>McCulloch · Pitts</h2>
+    <p class="idea">The neuron becomes a logical unit.</p>
+    <div class="paper">
+      A Logical Calculus of the Ideas Immanent in Nervous Activity<br>
+      <a href="https://www.cs.cmu.edu/~epxing/Class/10715/reading/McCulloch.and.Pitts.pdf" target="_blank" rel="noopener noreferrer">read paper</a>
+    </div>
+  </article>
 
-<div class="card">
-<div class="top">
-<div class="people">
-<img src="images/ai/hinton.jpg">
-</div>
-<div class="year">1986</div>
-</div>
-<h2>Rumelhart · Hinton · Williams</h2>
-<p class="idea">Deep networks become trainable.</p>
-<div class="paper">
-Learning representations by back-propagating errors<br>
-<a href="https://www.cs.toronto.edu/~hinton/absps/naturebp.pdf">read paper</a>
-</div>
-</div>
+  <article class="card">
+    <div class="card-top">
+      <div class="people">
+        <img src="/images/ai/rumelhart.jpg" alt="David Rumelhart">
+        <img src="/images/ai/hinton.jpg" alt="Geoffrey Hinton">
+        <div class="person-fallback">RJW</div>
+      </div>
+      <div class="year">1986</div>
+    </div>
+    <h2>Rumelhart · Hinton · Williams</h2>
+    <p class="idea">Deep networks become trainable.</p>
+    <div class="paper">
+      Learning representations by back-propagating errors<br>
+      <a href="https://www.cs.toronto.edu/~hinton/absps/naturebp.pdf" target="_blank" rel="noopener noreferrer">read paper</a>
+    </div>
+  </article>
 
-<div class="card">
-<div class="top">
-<div class="people">
-<img src="images/ai/schmidhuber.jpg">
-</div>
-<div class="year">1997</div>
-</div>
-<h2>Hochreiter · Schmidhuber</h2>
-<p class="idea">Neural networks learn to remember.</p>
-<div class="paper">
-Long Short-Term Memory<br>
-<a href="https://www.bioinf.jku.at/publications/older/2604.pdf">read paper</a>
-</div>
-</div>
+  <article class="card">
+    <div class="card-top">
+      <div class="people">
+        <img src="/images/ai/hochreiter.jpg" alt="Sepp Hochreiter">
+        <img src="/images/ai/schmidhuber.jpg" alt="Jürgen Schmidhuber">
+      </div>
+      <div class="year">1997</div>
+    </div>
+    <h2>Hochreiter · Schmidhuber</h2>
+    <p class="idea">Neural networks learn to remember.</p>
+    <div class="paper">
+      Long Short-Term Memory<br>
+      <a href="https://www.bioinf.jku.at/publications/older/2604.pdf" target="_blank" rel="noopener noreferrer">read paper</a>
+    </div>
+  </article>
 
-<div class="card">
-<div class="top">
-<div class="people">
-<img src="images/ai/sutskever.jpg">
-<img src="images/ai/hinton.jpg">
-</div>
-<div class="year">2012</div>
-</div>
-<h2>Krizhevsky · Sutskever · Hinton</h2>
-<p class="idea">Deep learning proves itself on large data.</p>
-<div class="paper">
-ImageNet Classification with Deep CNN<br>
-<a href="https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf">read paper</a>
-</div>
-</div>
+  <article class="card">
+    <div class="card-top">
+      <div class="people">
+        <div class="person-fallback">AK</div>
+        <img src="/images/ai/sutskever.jpg" alt="Ilya Sutskever">
+        <img src="/images/ai/hinton.jpg" alt="Geoffrey Hinton">
+      </div>
+      <div class="year">2012</div>
+    </div>
+    <h2>Krizhevsky · Sutskever · Hinton</h2>
+    <p class="idea">Deep learning proves itself on large data.</p>
+    <div class="paper">
+      ImageNet Classification with Deep Convolutional Neural Networks<br>
+      <a href="https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf" target="_blank" rel="noopener noreferrer">read paper</a>
+    </div>
+  </article>
 
-<div class="card">
-<div class="top">
-<div class="people"></div>
-<div class="year">2017</div>
-</div>
-<h2>Vaswani et al.</h2>
-<p class="idea">Attention replaces recurrence.</p>
-<div class="paper">
-Attention Is All You Need<br>
-<a href="https://arxiv.org/pdf/1706.03762.pdf">read paper</a>
-</div>
-</div>
+  <article class="card">
+    <div class="card-top">
+      <div class="people">
+        <div class="person-fallback">AV</div>
+      </div>
+      <div class="year">2017</div>
+    </div>
+    <h2>Vaswani et al.</h2>
+    <p class="idea">Attention replaces recurrence.</p>
+    <div class="paper">
+      Attention Is All You Need<br>
+      <a href="https://arxiv.org/pdf/1706.03762.pdf" target="_blank" rel="noopener noreferrer">read paper</a>
+    </div>
+  </article>
 
-<div class="card">
-<div class="top">
-<div class="people"></div>
-<div class="year">2020</div>
-</div>
-<h2>Brown et al.</h2>
-<p class="idea">Scale becomes capability.</p>
-<div class="paper">
-Language Models are Few-Shot Learners<br>
-<a href="https://arxiv.org/pdf/2005.14165.pdf">read paper</a>
-</div>
-</div>
+  <article class="card">
+    <div class="card-top">
+      <div class="people">
+        <div class="person-fallback">TBB</div>
+      </div>
+      <div class="year">2020</div>
+    </div>
+    <h2>Brown et al.</h2>
+    <p class="idea">Scale becomes capability.</p>
+    <div class="paper">
+      Language Models are Few-Shot Learners<br>
+      <a href="https://arxiv.org/pdf/2005.14165.pdf" target="_blank" rel="noopener noreferrer">read paper</a>
+    </div>
+  </article>
 
 </section>
 
 <footer class="footer">
-Modern AI did not appear suddenly. It emerged through a small chain of ideas.
+  Modern AI did not appear suddenly. It emerged through a small chain of ideas, each one changing what neural networks could represent, remember, and generate.
 </footer>
 
 </main>
