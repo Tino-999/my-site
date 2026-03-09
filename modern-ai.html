@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Making of Modern AI</title>
+
+<style>
+:root{
+  --bg:#f6f6f3;
+  --text:#202020;
+  --muted:#6d6d6d;
+  --line:#dfdfd8;
+  --link:#2f5bd3;
+  --card:#ffffff;
+}
+
+*{box-sizing:border-box}
+
+html,body{
+  margin:0;
+  padding:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Georgia,"Times New Roman",serif;
+  line-height:1.55;
+}
+
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.page{
+  width:min(1080px,calc(100% - 32px));
+  min-height:100dvh;
+  margin:0 auto;
+  padding:28px 0 24px;
+  display:flex;
+  flex-direction:column;
+}
+
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding-bottom:16px;
+  border-bottom:1px solid var(--line);
+}
+
+.back{
+  font-size:15px;
+  color:var(--muted);
+}
+
+.kicker{
+  font-size:14px;
+  color:var(--muted);
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+
+.hero{
+  padding:22px 0 18px;
+}
+
+h1{
+  margin:0 0 6px;
+  font-size:clamp(34px,5vw,56px);
+  font-weight:400;
+  letter-spacing:-0.02em;
+  line-height:1.05;
+}
+
+.subtitle{
+  margin:0;
+  color:var(--muted);
+  font-size:clamp(16px,2vw,22px);
+  font-style:italic;
+  max-width:760px;
+}
+
+.grid{
+  flex:1;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+  align-content:start;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:14px;
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+}
+
+.top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:10px;
+}
+
+.people{
+  display:flex;
+  align-items:center;
+}
+
+.people img{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  object-fit:cover;
+  border:1px solid var(--line);
+  filter:grayscale(100%);
+  background:var(--card);
+}
+
+.people img + img{
+  margin-left:-8px;
+}
+
+.year{
+  color:var(--muted);
+  font-size:13px;
+  white-space:nowrap;
+}
+
+.card h2{
+  margin:0 0 4px;
+  font-size:20px;
+  font-weight:400;
+  line-height:1.12;
+}
+
+.idea{
+  margin:0 0 8px;
+  font-size:15px;
+  line-height:1.35;
+}
+
+.paper{
+  margin-top:auto;
+  padding-top:8px;
+  border-top:1px solid var(--line);
+  font-size:14px;
+  line-height:1.35;
+}
+
+.paper a{
+  display:inline-block;
+  margin-top:2px;
+}
+
+.footer{
+  margin-top:18px;
+  padding-top:14px;
+  border-top:1px solid var(--line);
+  color:var(--muted);
+  font-size:14px;
+}
+
+@media(max-width:900px){
+  .page{
+    width:min(920px,calc(100% - 24px));
+    padding:20px 0 18px;
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;
+  }
+
+  .card{
+    padding:12px;
+  }
+
+  .card h2{
+    font-size:18px;
+  }
+
+  .idea{
+    font-size:14px;
+  }
+}
+
+@media(max-width:560px){
+  .page{
+    width:min(100%,calc(100% - 18px));
+    padding:14px 0 14px;
+  }
+
+  .topbar{
+    padding-bottom:12px;
+  }
+
+  .hero{
+    padding:14px 0 12px;
+  }
+
+  .subtitle{
+    font-size:15px;
+    line-height:1.35;
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+  }
+
+  .card{
+    padding:10px;
+    border-radius:10px;
+  }
+
+  .people img{
+    width:32px;
+    height:32px;
+  }
+
+  .year{
+    font-size:11px;
+  }
+
+  .card h2{
+    font-size:15px;
+    margin-bottom:3px;
+  }
+
+  .idea{
+    font-size:12.5px;
+    line-height:1.25;
+    margin-bottom:6px;
+  }
+
+  .paper{
+    font-size:12px;
+    padding-top:6px;
+  }
+
+  .footer{
+    margin-top:14px;
+    padding-top:10px;
+    font-size:12px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="page">
+
+  <div class="topbar">
+    <a class="back" href="/">← Back</a>
+    <div class="kicker">article</div>
+  </div>
+
+  <header class="hero">
+    <h1>The Making of Modern AI</h1>
+    <p class="subtitle">Six conceptual jumps from the first formal neuron to modern language models.</p>
+  </header>
+
+  <section class="grid">
+
+    <article class="card">
+      <div class="top">
+        <div class="people">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Walter_Pitts_1954.jpg/160px-Walter_Pitts_1954.jpg" alt="Walter Pitts">
+        </div>
+        <div class="year">1943</div>
+      </div>
+      <h2>McCulloch · Pitts</h2>
+      <p class="idea">The neuron becomes a logical unit.</p>
+      <div class="paper">
+        A Logical Calculus of the Ideas Immanent in Nervous Activity<br>
+        <a href="https://www.cs.cmu.edu/~epxing/Class/10715/reading/McCulloch.and.Pitts.pdf" target="_blank" rel="noopener noreferrer">read paper</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="top">
+        <div class="people">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Geoffrey_Hinton_at_UBC.jpg/160px-Geoffrey_Hinton_at_UBC.jpg" alt="Geoffrey Hinton">
+        </div>
+        <div class="year">1986</div>
+      </div>
+      <h2>Rumelhart · Hinton · Williams</h2>
+      <p class="idea">Deep networks become trainable.</p>
+      <div class="paper">
+        Learning representations by back-propagating errors<br>
+        <a href="https://www.cs.toronto.edu/~hinton/absps/naturebp.pdf" target="_blank" rel="noopener noreferrer">read paper</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="top">
+        <div class="people">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Juergen_Schmidhuber_2017.jpg/160px-Juergen_Schmidhuber_2017.jpg" alt="Jürgen Schmidhuber">
+        </div>
+        <div class="year">1997</div>
+      </div>
+      <h2>Hochreiter · Schmidhuber</h2>
+      <p class="idea">Neural networks learn to remember.</p>
+      <div class="paper">
+        Long Short-Term Memory<br>
+        <a href="https://www.bioinf.jku.at/publications/older/2604.pdf" target="_blank" rel="noopener noreferrer">read paper</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="top">
+        <div class="people">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ilya_Sutskever_2018.jpg/160px-Ilya_Sutskever_2018.jpg" alt="Ilya Sutskever">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Geoffrey_Hinton_at_UBC.jpg/160px-Geoffrey_Hinton_at_UBC.jpg" alt="Geoffrey Hinton">
+        </div>
+        <div class="year">2012</div>
+      </div>
+      <h2>Krizhevsky · Sutskever · Hinton</h2>
+      <p class="idea">Deep learning proves itself on large data.</p>
+      <div class="paper">
+        ImageNet Classification with Deep Convolutional Neural Networks<br>
+        <a href="https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf" target="_blank" rel="noopener noreferrer">read paper</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="top">
+        <div class="people">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Ashish_Vaswani_2017.jpg/160px-Ashish_Vaswani_2017.jpg" alt="Ashish Vaswani">
+        </div>
+        <div class="year">2017</div>
+      </div>
+      <h2>Vaswani et al.</h2>
+      <p class="idea">Attention replaces recurrence.</p>
+      <div class="paper">
+        Attention Is All You Need<br>
+        <a href="https://arxiv.org/pdf/1706.03762.pdf" target="_blank" rel="noopener noreferrer">read paper</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="top">
+        <div class="people">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/OpenAI_Logo.svg/160px-OpenAI_Logo.svg.png" alt="OpenAI">
+        </div>
+        <div class="year">2020</div>
+      </div>
+      <h2>Brown et al.</h2>
+      <p class="idea">Scale becomes capability.</p>
+      <div class="paper">
+        Language Models are Few-Shot Learners<br>
+        <a href="https://arxiv.org/pdf/2005.14165.pdf" target="_blank" rel="noopener noreferrer">read paper</a>
+      </div>
+    </article>
+
+  </section>
+
+  <footer class="footer">
+    Modern AI did not appear suddenly. It emerged through a small chain of ideas, each one changing what neural networks could represent, remember, and generate.
+  </footer>
+
+</main>
+
+</body>
+</html>
