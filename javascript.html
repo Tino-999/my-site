@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>JavaScript Schlüsselwörter</title>
+
+<style>
+:root{
+  --bg:#f6f6f3;
+  --text:#202020;
+  --muted:#6d6d6d;
+  --line:#dfdfd8;
+  --link:#2f5bd3;
+  --card:#ffffff;
+}
+
+*{box-sizing:border-box}
+
+html,body{
+  margin:0;
+  padding:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Georgia,"Times New Roman",serif;
+}
+
+body{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.page{
+  width:min(920px,calc(100vw - 24px));
+  height:min(100vh - 24px,900px);
+  display:grid;
+  grid-template-rows:auto auto 1fr auto;
+  gap:16px;
+}
+
+.back-link{
+  display:inline-block;
+  color:var(--muted);
+  text-decoration:none;
+  font-size:15px;
+}
+
+.hero{
+  border-bottom:1px solid var(--line);
+  padding-bottom:14px;
+  text-align:center;
+}
+
+h1{
+  margin:0;
+  font-size:clamp(26px,4vw,44px);
+  font-weight:400;
+  letter-spacing:-0.02em;
+}
+
+.subtitle{
+  margin:6px 0 0;
+  color:var(--muted);
+  font-size:clamp(14px,2vw,22px);
+  font-style:italic;
+}
+
+.story{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px 18px;
+  align-content:start;
+}
+
+.card{
+  border-top:1px solid var(--line);
+  padding-top:12px;
+}
+
+.keywords{
+  font-size:clamp(18px,1.7vw,26px);
+  margin-bottom:6px;
+  letter-spacing:-0.02em;
+}
+
+.keywords span{
+  margin-right:10px;
+  background:#ffffff;
+  padding:2px 6px;
+  border-radius:4px;
+  border:1px solid var(--line);
+}
+
+.title{
+  font-size:clamp(16px,1.4vw,22px);
+  margin:0 0 6px;
+  letter-spacing:-0.01em;
+}
+
+.card p{
+  margin:0;
+  color:var(--muted);
+  font-size:clamp(12px,1.1vw,16px);
+}
+
+.footer{
+  border-top:1px solid var(--line);
+  padding-top:12px;
+  color:var(--muted);
+  font-size:clamp(12px,1.1vw,15px);
+  text-align:center;
+}
+
+.footer strong{
+  color:var(--text);
+  font-weight:400;
+}
+
+@media(max-width:720px){
+  .story{grid-template-columns:1fr 1fr}
+}
+
+</style>
+</head>
+<body>
+<main class="page">
+
+<a class="back-link" href="/">← Back</a>
+
+<section class="hero">
+  <h1>JavaScript Schlüsselwörter</h1>
+  <p class="subtitle">Jedes Programm ist eine kleine Geschichte.</p>
+</section>
+
+<section class="story">
+  <div class="card">
+    <div class="keywords"><span>const</span><span>let</span></div>
+    <div class="title">Dinge benennen</div>
+    <p>Ein Programm beginnt damit, Dinge zu benennen.</p>
+  </div>
+
+  <div class="card">
+    <div class="keywords"><span>function</span><span>return</span></div>
+    <div class="title">Verhalten beschreiben</div>
+    <p>Funktionen beschreiben Handlungen und geben Ergebnisse zurück.</p>
+  </div>
+
+  <div class="card">
+    <div class="keywords"><span>if</span><span>else</span></div>
+    <div class="title">Entscheidungen treffen</div>
+    <p>Programme wählen je nach Situation einen anderen Weg.</p>
+  </div>
+
+  <div class="card">
+    <div class="keywords"><span>for</span><span>while</span></div>
+    <div class="title">Dinge wiederholen</div>
+    <p>Manche Arbeit passiert nicht einmal, sondern immer wieder.</p>
+  </div>
+
+  <div class="card">
+    <div class="keywords"><span>async</span><span>await</span></div>
+    <div class="title">Auf Antworten warten</div>
+    <p>Manche Antworten brauchen Zeit, etwa von Servern oder Datenbanken.</p>
+  </div>
+
+  <div class="card">
+    <div class="keywords"><span>try</span><span>catch</span></div>
+    <div class="title">Mit Fehlern umgehen</div>
+    <p>Programme bleiben ruhig, auch wenn etwas schiefgeht.</p>
+  </div>
+
+  <div class="card">
+    <div class="keywords"><span>class</span><span>new</span><span>this</span></div>
+    <div class="title">Struktur schaffen</div>
+    <p>Wenn Programme wachsen, brauchen Verhalten und Daten eine Form.</p>
+  </div>
+
+  <div class="card">
+    <div class="keywords"><span>export</span><span>import</span><span>default</span></div>
+    <div class="title">Wissen teilen</div>
+    <p>Dateien arbeiten zusammen und geben sich Dinge weiter.</p>
+  </div>
+</section>
+
+<div class="card">
+  <div class="keywords">
+    <span>JavaScript</span>
+    <span>Web APIs</span>
+    <span>HTTP</span>
+    <span>CORS</span>
+  </div>
+  <div class="title">Wo diese Dinge eigentlich leben</div>
+  <p>
+    JavaScript ist nur eine Sprache. Viele Dinge, die man im Alltag benutzt,
+    gehören eigentlich zur Umgebung des Browsers oder zum Web-Protokoll.
+  </p>
+
+  <p>
+    <strong>JavaScript</strong> → Programmiersprache<br>
+    <strong>Web APIs</strong> → Funktionen des Browsers (fetch, Response, Headers)<br>
+    <strong>HTTP</strong> → Kommunikationsprotokoll des Webs<br>
+    <strong>CORS</strong> → Sicherheitsregel im Browser für API-Zugriffe
+  </p>
+</div>
+  
+<footer class="footer">
+  <strong>Ein Programm ist nur</strong> Namen, Handlungen, Entscheidungen, Zeit, Struktur und Zusammenarbeit.
+</footer>
+
+</main>
+</body>
+</html>
