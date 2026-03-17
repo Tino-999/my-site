@@ -62,14 +62,22 @@ h1{
   font-size:19px;
 }
 
+.links-wrap{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:14px;
+  margin-top:22px;
+}
+
 .links{
   display:flex;
   flex-wrap:wrap;
   gap:10px;
-  margin-top:22px;
 }
 
-.links a{
+.links a,
+.field-links a{
   display:inline-flex;
   align-items:center;
   justify-content:center;
@@ -80,6 +88,26 @@ h1{
   background:var(--card);
   color:var(--text);
   font-size:18px;
+}
+
+.divider{
+  color:var(--muted);
+  font-size:24px;
+  line-height:1;
+  padding:0 2px;
+}
+
+.field-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.field-links a{
+  font-size:14px;
+  padding:0 10px;
+  min-width:42px;
+  width:auto;
 }
 
 .section-title{
@@ -139,7 +167,9 @@ h1{
 
 @media(max-width:720px){
   .hero{text-align:center}
-  .links{justify-content:center}
+  .links-wrap{justify-content:center}
+  .links,
+  .field-links{justify-content:center}
 }
 </style>
 </head>
@@ -153,7 +183,11 @@ h1{
 <h1 id="name"></h1>
 <p class="subtitle" id="tagline"></p>
 <p class="intro" id="introText"></p>
+<div class="links-wrap">
 <div class="links" id="socialLinks"></div>
+<span class="divider" aria-hidden="true">II</span>
+<div class="field-links" id="fieldLinks"></div>
+</div>
 </div>
 </section>
 
@@ -190,6 +224,16 @@ links:[
 {label:"GH",href:"https://github.com/Tino-999/"},
 {label:"in",href:"https://www.linkedin.com/in/tinoschuldt/"},
 {label:"✉",href:"mailto:tinoschuldt100@gmail.com"}
+],
+
+fields:[
+{label:"Mathe",href:"/mathematik.html"},
+{label:"Prog",href:"/programmierung.html"},
+{label:"AI",href:"/ai.html"},
+{label:"Phil",href:"/philosophie.html"},
+{label:"Space",href:"/weltraum.html"},
+{label:"Art",href:"/kunst.html"},
+{label:"Culture",href:"/kultur.html"}
 ],
 
 projects:[
@@ -253,8 +297,21 @@ profile.links.forEach(link=>{
 const a=document.createElement("a");
 a.href=link.href;
 a.target="_blank";
+a.rel="noopener noreferrer";
 a.textContent=link.label;
 linksEl.appendChild(a);
+});
+
+
+// Learning Fields
+
+const fieldLinksEl=document.getElementById("fieldLinks");
+
+profile.fields.forEach(field=>{
+const a=document.createElement("a");
+a.href=field.href;
+a.textContent=field.label;
+fieldLinksEl.appendChild(a);
 });
 
 
