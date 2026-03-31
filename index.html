@@ -62,22 +62,14 @@ h1{
   font-size:19px;
 }
 
-.links-wrap{
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  gap:14px;
-  margin-top:22px;
-}
-
 .links{
   display:flex;
   flex-wrap:wrap;
   gap:10px;
+  margin-top:22px;
 }
 
-.links a,
-.field-links a{
+.links a{
   display:inline-flex;
   align-items:center;
   justify-content:center;
@@ -90,39 +82,28 @@ h1{
   font-size:18px;
 }
 
-.divider{
-  color:var(--muted);
-  font-size:24px;
-  line-height:1;
-  padding:0 2px;
-}
-
-.field-links{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
-
-.field-links a{
-  font-size:14px;
-  padding:0 10px;
-  min-width:42px;
-  width:auto;
-}
-
 .section-title{
   margin:40px 0 10px;
   font-size:28px;
   font-weight:400;
 }
 
+.section-note{
+  margin:0 0 18px;
+  max-width:700px;
+  color:var(--muted);
+  font-size:17px;
+}
+
 .projects,
-.articles{
+.articles,
+.memberships{
   margin-top:10px;
 }
 
 .project,
-.article{
+.article,
+.membership{
   display:grid;
   grid-template-columns:80px 1fr;
   gap:18px;
@@ -131,12 +112,14 @@ h1{
 }
 
 .project:first-child,
-.article:first-child{
+.article:first-child,
+.membership:first-child{
   border-top:none;
 }
 
 .project img,
-.article img{
+.article img,
+.membership-badge{
   width:70px;
   height:70px;
   object-fit:cover;
@@ -145,14 +128,30 @@ h1{
   filter:grayscale(100%);
 }
 
+.membership-badge{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--card);
+  color:var(--muted);
+  font-size:13px;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  padding:8px;
+  text-align:center;
+  line-height:1.2;
+}
+
 .project-title,
-.article-title{
+.article-title,
+.membership-title{
   font-size:20px;
   margin:0 0 6px;
 }
 
 .project p,
-.article p{
+.article p,
+.membership p{
   margin:0;
   font-size:17px;
 }
@@ -167,9 +166,7 @@ h1{
 
 @media(max-width:720px){
   .hero{text-align:center}
-  .links-wrap{justify-content:center}
-  .links,
-  .field-links{justify-content:center}
+  .links{justify-content:center}
 }
 </style>
 </head>
@@ -183,11 +180,7 @@ h1{
 <h1 id="name"></h1>
 <p class="subtitle" id="tagline"></p>
 <p class="intro" id="introText"></p>
-<div class="links-wrap">
 <div class="links" id="socialLinks"></div>
-<span class="divider" aria-hidden="true">II</span>
-<div class="field-links" id="fieldLinks"></div>
-</div>
 </div>
 </section>
 
@@ -199,6 +192,12 @@ h1{
 <section class="articles">
 <h2 class="section-title">Articles</h2>
 <div id="articles"></div>
+</section>
+
+<section class="memberships">
+<h2 class="section-title">Cultural & Intellectual Circles</h2>
+<p class="section-note">I am a member of these circles because they sharpen how I think about the future. Art, film, literature and philosophy give depth to technology, space and optimism.</p>
+<div id="memberships"></div>
 </section>
 
 <footer class="footer">
@@ -224,16 +223,6 @@ links:[
 {label:"GH",href:"https://github.com/Tino-999/"},
 {label:"in",href:"https://www.linkedin.com/in/tinoschuldt/"},
 {label:"✉",href:"mailto:tinoschuldt100@gmail.com"}
-],
-
-fields:[
-{label:"Math",href:"/mathematik.html"},
-{label:"Prog",href:"/programmierung.html"},
-{label:"AI",href:"/ai.html"},
-{label:"Phil",href:"/philosophie.html"},
-{label:"Space",href:"/weltraum.html"},
-{label:"Art",href:"/kunst.html"},
-{label:"Culture",href:"/kultur.html"}
 ],
 
 projects:[
@@ -276,12 +265,49 @@ image:"/images/javascript.png",
 desc:"A small reduced page that frames the core JavaScript keywords as the story of a program."
 }
 
+],
+
+memberships:[
+{
+name:"Haus der Kunst",
+link:"https://www.hausderkunst.de/",
+badge:"HDK",
+desc:"Haus der Kunst inspires me to think differently through its exhibitions. It helps me see the future from new angles."
+},
+{
+name:"PIN. Freunde der Pinakothek",
+link:"https://www.pin-freunde.de/",
+badge:"PIN",
+desc:"The Pinakotheken tell me a great deal about the history of art. They remind me that every future grows out of a longer cultural story."
+},
+{
+name:"Residenztheater",
+link:"https://www.residenztheater.de/",
+badge:"RESI",
+desc:"The Residenztheater is one of the best houses in Munich with great premieres. It keeps me close to strong language, tension and human questions."
+},
+{
+name:"Freundeskreis HFF München",
+link:"https://www.hff-muenchen.de/de_DE/freundeskreis",
+badge:"HFF",
+desc:"Since my time at ARRI I have stayed closely connected to the HFF, and I still love being in touch with the film scene. Film often carries the first images of the future."
+},
+{
+name:"Literaturhaus München",
+link:"https://www.literaturhaus-muenchen.de/",
+badge:"LIT",
+desc:"The Literaturhaus opens the world of literature. It gives depth to ideas and makes optimism more articulate."
+},
+{
+name:"pro philosophia",
+link:"https://hfph.de/hochschule/philosophie-foerdern/pro-philosophia/",
+badge:"PHIL",
+desc:"I think philosophy matters because of the profound developments that lie ahead. If the future gets bigger, our thinking has to grow with it."
+}
 ]
 
 };
 
-
-// Header
 
 document.getElementById("name").textContent=profile.name;
 document.getElementById("tagline").textContent=profile.tagline;
@@ -289,33 +315,16 @@ document.getElementById("introText").textContent=profile.intro;
 document.getElementById("footerText").textContent=profile.footer;
 
 
-// Social Links
-
 const linksEl=document.getElementById("socialLinks");
 
 profile.links.forEach(link=>{
 const a=document.createElement("a");
 a.href=link.href;
 a.target="_blank";
-a.rel="noopener noreferrer";
 a.textContent=link.label;
 linksEl.appendChild(a);
 });
 
-
-// Learning Fields
-
-const fieldLinksEl=document.getElementById("fieldLinks");
-
-profile.fields.forEach(field=>{
-const a=document.createElement("a");
-a.href=field.href;
-a.textContent=field.label;
-fieldLinksEl.appendChild(a);
-});
-
-
-// Projects
 
 const projectsEl=document.getElementById("projects");
 
@@ -349,8 +358,6 @@ projectsEl.appendChild(row);
 });
 
 
-// Articles
-
 const articlesEl=document.getElementById("articles");
 
 profile.articles.forEach(aItem=>{
@@ -378,6 +385,41 @@ row.appendChild(img);
 row.appendChild(text);
 
 articlesEl.appendChild(row);
+
+});
+
+
+const membershipsEl=document.getElementById("memberships");
+
+profile.memberships.forEach(item=>{
+
+const row=document.createElement("div");
+row.className="membership";
+
+const badge=document.createElement("a");
+badge.href=item.link;
+badge.target="_blank";
+badge.className="membership-badge";
+badge.textContent=item.badge;
+
+const text=document.createElement("div");
+
+const title=document.createElement("a");
+title.href=item.link;
+title.className="membership-title";
+title.textContent=item.name;
+title.target="_blank";
+
+const desc=document.createElement("p");
+desc.textContent=item.desc;
+
+text.appendChild(title);
+text.appendChild(desc);
+
+row.appendChild(badge);
+row.appendChild(text);
+
+membershipsEl.appendChild(row);
 
 });
 
